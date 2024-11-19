@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-vue
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-vue
+  template:
+    metadata:
+      labels:
+        app: devops-vue
+    spec:
+      containers:
+      - name: devops-vue
+        image: metiamnow/devops-vue:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
